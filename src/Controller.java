@@ -19,6 +19,12 @@ public class Controller {
     @FXML
     private Label weatherOutput;
 
+    String responseBody = "";
+    String temperature = "";
+    String humidity = "";
+    String windSpeed = "";
+    String unit = "Celsius";
+
     @FXML
     private void getWeather() {
         String location = locationInput.getText();
@@ -41,10 +47,10 @@ public class Controller {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             // Parse the JSON response and get emperature, humidity, and wind speed
-            String responseBody = response.body();
-            String temperature = responseBody.split("\"temp\":")[1].split(",")[0];
-            String humidity = responseBody.split("\"humidity\":")[1].split(",")[0].replaceAll("\\D+","");
-            String windSpeed = responseBody.split("\"speed\":")[1].split(",")[0];
+            responseBody = response.body();
+            temperature = responseBody.split("\"temp\":")[1].split(",")[0];
+            humidity = responseBody.split("\"humidity\":")[1].split(",")[0].replaceAll("\\D+","");
+            windSpeed = responseBody.split("\"speed\":")[1].split(",")[0];
 
             // Display the temperature, humidity, and wind speed in weatherOutput label in App.fxml
             weatherOutput.setText("Temperature: " + temperature + "°C\nHumidity: " + humidity + "%\nWind Speed: " + windSpeed + "m/s");
@@ -54,5 +60,22 @@ public class Controller {
             e.printStackTrace();
         }
 
+    }
+
+    @FXML
+    private void switchUnit(){
+        double temp = Double.parseDouble(temperature);
+        double convertedTemp;
+
+        if (unit.equals("Celsius")) {
+            convertedTemp = (temp * 9/5) + 32;
+            unit = "Fahrenheit";
+        } else {
+            convertedTemp = (temp - 32) * 5/9;
+            unit = "Celsius";
+        }
+
+        temperature = String.format("%.2f", convertedTemp);
+        weatherOutput.setText("Temperature: " + temperature + "°" + unit + "\nHumidity: " + humidity + "%\nWind Speed: " + windSpeed + "m/s");
     }
 }

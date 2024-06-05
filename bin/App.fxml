@@ -4,7 +4,11 @@
 <?import javafx.scene.layout.*?>
 
 <VBox fx:controller="Controller" xmlns:fx="http://javafx.com/fxml">
+    <Label fx:id="appTitleLabel" text="Welcome to Weather Information App!" style="-fx-font-weight: bold;"/>
+    <Region minHeight=""/> <!-- This will act as a spacer -->
     <TextField fx:id="locationInput" promptText="Enter location"/>
     <Button text="Get Weather" onAction="#getWeather"/>
+    <Label fx:id="currentWeatherLabel" text="Current Weather:" style="-fx-font-weight: bold;"/>
     <Label fx:id="weatherOutput"/>
+    <Button text="Switch Celsius / Fahrenheit" onAction="#switchUnit"/>
 </VBox>
