@@ -1,4 +1,3 @@
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +10,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("App.fxml"));
         primaryStage.setTitle("Weather Information App");
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setScene(new Scene(root, 400, 600)); // Changed the width to 400
         primaryStage.show();
     }
 
