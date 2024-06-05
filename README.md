@@ -1,5 +1,7 @@
 
 ## Welcome to Weather Information App!
+<img width="355" alt="AppImage" src="https://github.com/hikaruminagawa/WeatherInformationApp/assets/96165184/be673890-37af-43b2-9fe9-953600249c07">
+
 
 ## Getting Started
 
