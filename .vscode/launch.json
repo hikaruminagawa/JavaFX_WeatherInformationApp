@@ -16,7 +16,8 @@
             "request": "launch",
             "mainClass": "App",
             "projectName": "WeatherInformationApp_66dd7f53",
-            "vmArgs": "--module-path \"C:\\Program Files\\javafx-sdk-22.0.1\\lib\" --add-modules javafx.controls,javafx.fxml"
+            "vmArgs": "--module-path \"C:\\Program Files\\javafx-sdk-22.0.1\\lib\" --add-modules javafx.controls,javafx.fxml",
+            "C:\\Users\\hminagawa\\OneDrive - Microsoft\\00.Download\\json-simple-1.1.1.jar"
         }
     ]
 }

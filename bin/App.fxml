@@ -4,11 +4,19 @@
 <?import javafx.scene.layout.*?>
 
 <VBox fx:controller="Controller" xmlns:fx="http://javafx.com/fxml">
-    <Label fx:id="appTitleLabel" text="Welcome to Weather Information App!" style="-fx-font-weight: bold;"/>
-    <Region minHeight=""/> <!-- This will act as a spacer -->
+    <Label fx:id="appTitleLabel" text="Welcome to Weather Information App!" style="-fx-font-weight: bold; -fx-font-size: 20px;"/>
+    <Region minHeight="20"/> <!-- This will act as a spacer -->
     <TextField fx:id="locationInput" promptText="Enter location"/>
-    <Button text="Get Weather" onAction="#getWeather"/>
+    <HBox>
+        <Button text="Get Current Weather" onAction="#getWeather"/>
+        <Button text="Get Forecast" onAction="#getForecast"/>
+    </HBox>
+    <Region minHeight="20"/> <!-- This will act as a spacer -->
     <Label fx:id="currentWeatherLabel" text="Current Weather:" style="-fx-font-weight: bold;"/>
     <Label fx:id="weatherOutput"/>
+    <Region minHeight="20"/> <!-- This will act as a spacer -->
+    <Label fx:id="forecastLabel" text="Forecast:" style="-fx-font-weight: bold;"/>
+    <Label fx:id="weatherForecast"/>
+    <Region minHeight="50"/> <!-- This will act as a spacer -->
     <Button text="Switch Celsius / Fahrenheit" onAction="#switchUnit"/>
 </VBox>
