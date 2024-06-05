@@ -1,6 +1,5 @@
 
 ## Welcome to Weather Information App!
-![alt text](image.png)
 
 ## Getting Started
 

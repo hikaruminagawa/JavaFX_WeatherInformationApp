@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.geometry.Insets?>
 
 <VBox fx:controller="Controller" xmlns:fx="http://javafx.com/fxml" spacing="10" alignment="CENTER" style="-fx-background-color: #F0F0F0;">
@@ -14,6 +15,7 @@
         <Button text="Get Current Weather" onAction="#getWeather" style="-fx-background-color: #007BFF; -fx-text-fill: white;"/>
         <Button text="Get Forecast" onAction="#getForecast" style="-fx-background-color: #007BFF; -fx-text-fill: white;"/>
     </HBox>
+    <ImageView fx:id="weatherIcon" fitHeight="143.0" fitWidth="575.0" layoutX="13.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" />
     <Label fx:id="currentWeatherLabel" text="Current Weather:" style="-fx-font-weight: bold;"/>
     <Label fx:id="weatherOutput"/>
     <Label fx:id="forecastLabel" text="Forecast:" style="-fx-font-weight: bold;"/>

@@ -2,24 +2,22 @@
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import java.io.BufferedReader;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONArray;
 
 
 public class Controller {
     @FXML
     private TextField locationInput;
+
+    @FXML
+    private ImageView weatherIcon;
 
     @FXML
     private Label weatherOutput;
@@ -43,6 +41,8 @@ public class Controller {
 
     // API key for OpenWeatherMap
     String key = "6fa085713e4974b450750c580a20857a";
+
+
 
     @FXML
     private void getWeather() {
@@ -75,6 +75,27 @@ public class Controller {
             // Display the temperature, humidity, and wind speed in weatherOutput label in App.fxml
             weatherOutput.setText("Condition: " + condition + "\nTemperature: " + temperature + "°C\nHumidity: " + humidity + "%\nWind Speed: " + windSpeed + "m/s");
             System.out.println(responseBody);
+
+            // Set weatherIcon to the appropriate image based on the condition
+            Image image = null;
+            
+            switch (condition) {
+                case "Clear":
+                    image = new Image ("images\\Clear.png");
+                    break;
+                case "Clouds":
+                    image = new Image ("images\\Clouds.png");
+                    break;
+                case "Rain":
+                    image = new Image ("images\\Rain.png");
+                    break;
+                case "Snow":
+                    image = new Image ("images\\Snow.png");
+                    break;
+                default:
+                    break;
+            }
+            weatherIcon.setImage(image);
 
 
         } catch (IOException | InterruptedException e) {
