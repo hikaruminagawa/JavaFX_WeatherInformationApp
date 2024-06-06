@@ -24,5 +24,6 @@
     <Label fx:id="forecastLabel" style="-fx-font-weight: bold;" text="Forecast:" />
     <Label fx:id="weatherForecast" />
     <Button onAction="#switchUnit" style="-fx-background-color: #007BFF; -fx-text-fill: white;" text="Switch Celsius / Fahrenheit" />
-   <Button onAction="#switchUnit" style="-fx-background-color: #007BFF; -fx-text-fill: white;" text="History" />
+    <Button onAction="#showSearchHistory" style="-fx-background-color: #007BFF; -fx-text-fill: white;" text="Search History" />
+    <Label fx:id="searchHistoryLabel"/>
 </VBox>

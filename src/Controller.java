@@ -1,3 +1,9 @@
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.*;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -5,11 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+
 
 
 public class Controller {
@@ -21,6 +23,12 @@ public class Controller {
 
     @FXML
     private Label weatherOutput;
+
+    @FXML
+    private Label searchHistoryLabel;
+
+    // Initialize HashMap to store the search history with timestamp and location
+    HashMap<String, String> searchHistory = new HashMap<>();
 
     
     String responseBody = "";
@@ -93,10 +101,13 @@ public class Controller {
                     image = new Image ("images\\Snow.png");
                     break;
                 default:
+                    image = new Image ("images\\Unknown.png");
                     break;
             }
             weatherIcon.setImage(image);
 
+            // Add the location to the searchHistory HashMap with the current timestamp
+            searchHistory.put(location, new Date().toString());
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
@@ -175,12 +186,20 @@ public class Controller {
             }
             
             // Display the forecast data in the weatherForecast label in App.fxml
-            weatherForecast.setText(forecastOutput);
-
-            
+            weatherForecast.setText(forecastOutput);  
         
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void showSearchHistory(){
+        // Display the search history in the searchHistory label in App.fxml by formatting the searchHistory HashMap
+        String searchHistoryOutput = "";
+        for (Map.Entry<String, String> entry : searchHistory.entrySet()) {
+            searchHistoryOutput += entry.getKey() + " - " + entry.getValue() + "\n";
+        }
+        searchHistoryLabel.setText(searchHistoryOutput);
     }
 }
