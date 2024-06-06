@@ -77,11 +77,11 @@ public class Controller {
                 null, null, null, null);
         BackgroundImage nightImage = new BackgroundImage(new Image("images\\Night.png", 400, 600, false, true), null, null,
                 null, null);
-        
+         
         mainScreen.setBackground(new Background(morningImage));
     }
 
-    
+    // Initialize variables to store the weather data
     String responseBody = "";
     String condition = "";
     String temperature = "";
@@ -92,7 +92,7 @@ public class Controller {
     @FXML
     private Label weatherForecast;
 
-
+    // Initialize variables to store the forecast data
     String forecastDate = "";
     String forecastTemperature = "";
     String forecastCondition = "";
@@ -102,7 +102,7 @@ public class Controller {
     String key = "6fa085713e4974b450750c580a20857a";
 
 
-
+    // Method to get the weather data for the location entered in the locationInput TextField
     @FXML
     private void getWeather() {
         // Get the location from the locationInput TextField
@@ -166,6 +166,7 @@ public class Controller {
 
     }
 
+    // Method to switch the temperature unit between Celsius and Fahrenheit
     @FXML
     private void switchUnit(){
         double temp = Double.parseDouble(temperature);
@@ -192,6 +193,7 @@ public class Controller {
 
     }
 
+    // Method to get the forecast for the next 3 days
     @FXML
     private void getForecast(){
         // Get the location from the locationInput TextField
