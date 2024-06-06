@@ -78,7 +78,21 @@ public class Controller {
         BackgroundImage nightImage = new BackgroundImage(new Image("images\\Night.png", 400, 600, false, true), null, null,
                 null, null);
          
-        mainScreen.setBackground(new Background(morningImage));
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            LocalDateTime currentTime = LocalDateTime.now();
+            int hour = currentTime.getHour();
+            if (hour >= 6 && hour < 12) {
+                mainScreen.setBackground(new Background(morningImage));
+            } else if (hour >= 12 && hour < 17) {
+                mainScreen.setBackground(new Background(afternoonImage));
+            } else if (hour >= 17 && hour < 20) {
+                mainScreen.setBackground(new Background(eveningImage));
+            } else {
+                mainScreen.setBackground(new Background(nightImage));
+            }
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 
     // Initialize variables to store the weather data
