@@ -2,8 +2,8 @@
   
 Welcome to the Weather Information App! This application provides current weather information and forecasts for a specified location. It is built using JavaFX and utilizes the OpenWeatherMap API to fetch weather data.  
 
-<img width="380" alt="WeatherInfoAppImage" src="https://github.com/hikaruminagawa/WeatherInformationApp/assets/96165184/6665eca9-edce-41fe-ac9d-4dbae930bb08">
-  
+<img width="290" alt="WeatherInfoAppImage" src="https://github.com/hikaruminagawa/JavaFX_WeatherInformationApp/assets/96165184/6be0b136-dfcf-4d7e-ab12-be6ffcee8995">
+
 ## Table of Contents  
 - [Installation](#installation)  
 - [Usage](#usage)  
