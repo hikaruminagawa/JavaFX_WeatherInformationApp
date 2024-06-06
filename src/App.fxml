@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox fx:controller="Controller" xmlns:fx="http://javafx.com/fxml" spacing="10" alignment="CENTER" style="-fx-background-color: #F0F0F0;">
+<VBox alignment="CENTER" spacing="10" style="-fx-background-color: #F0F0F0;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="Controller">
     <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
+        <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
-    <Label fx:id="appTitleLabel" text="Welcome to Weather Information App!" style="-fx-font-weight: bold; -fx-font-size: 24px;"/>
-    <TextField fx:id="locationInput" promptText="Enter location" maxWidth="300"/>
-    <HBox spacing="10">
-        <Button text="Get Current Weather" onAction="#getWeather" style="-fx-background-color: #007BFF; -fx-text-fill: white;"/>
-        <Button text="Get Forecast" onAction="#getForecast" style="-fx-background-color: #007BFF; -fx-text-fill: white;"/>
+    <Label fx:id="appTitleLabel" style="-fx-font-weight: bold; -fx-font-size: 24px;" text="Welcome to Weather Information App!" />
+    <TextField fx:id="locationInput" maxWidth="300" promptText="Enter location" />
+    <HBox alignment="TOP_CENTER" spacing="10">
+        <Button onAction="#getWeather" style="-fx-background-color: #007BFF; -fx-text-fill: white;" text="Get Current Weather" />
+        <Button onAction="#getForecast" style="-fx-background-color: #007BFF; -fx-text-fill: white;" text="Get Forecast" textAlignment="CENTER" />
     </HBox>
     <ImageView fx:id="weatherIcon" fitHeight="143.0" fitWidth="575.0" layoutX="13.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" />
-    <Label fx:id="currentWeatherLabel" text="Current Weather:" style="-fx-font-weight: bold;"/>
-    <Label fx:id="weatherOutput"/>
-    <Label fx:id="forecastLabel" text="Forecast:" style="-fx-font-weight: bold;"/>
-    <Label fx:id="weatherForecast"/>
-    <Button text="Switch Celsius / Fahrenheit" onAction="#switchUnit" style="-fx-background-color: #007BFF; -fx-text-fill: white;"/>
+    <Label fx:id="currentWeatherLabel" style="-fx-font-weight: bold;" text="Current Weather:" />
+    <Label fx:id="weatherOutput" />
+    <Label fx:id="forecastLabel" style="-fx-font-weight: bold;" text="Forecast:" />
+    <Label fx:id="weatherForecast" />
+    <Button onAction="#switchUnit" style="-fx-background-color: #007BFF; -fx-text-fill: white;" text="Switch Celsius / Fahrenheit" />
+   <Button onAction="#switchUnit" style="-fx-background-color: #007BFF; -fx-text-fill: white;" text="History" />
 </VBox>
