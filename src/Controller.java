@@ -3,18 +3,36 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
+import javafx.util.Duration;
 
 
 
 public class Controller {
+
+    @FXML
+    private VBox mainScreen;
+
+    @FXML       
+    private Label timeLabel;
+
     @FXML
     private TextField locationInput;
 
@@ -29,6 +47,39 @@ public class Controller {
 
     // Initialize HashMap to store the search history with timestamp and location
     HashMap<String, String> searchHistory = new HashMap<>();
+
+    // Get current time and date and keep updating it every second, then display it on timeLabel
+    @FXML
+    public void initialize() {
+        Thread clock = new Thread(() -> {
+            while (true) {
+                Date date = new Date();
+                DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+                String time = timeFormat.format(date);
+                Platform.runLater(() -> timeLabel.setText(time));
+
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        });
+        clock.setDaemon(true);
+        clock.start();
+
+        // Set the background image based on the time of day
+        BackgroundImage morningImage = new BackgroundImage(new Image("images\\Morning.png", 400, 600, false, true),
+                null, null, null, null);
+        BackgroundImage afternoonImage = new BackgroundImage(new Image("images\\Afternoon.png", 400, 600, false, true),
+                null, null, null, null);
+        BackgroundImage eveningImage = new BackgroundImage(new Image("images\\Evening.png", 400, 600, false, true),
+                null, null, null, null);
+        BackgroundImage nightImage = new BackgroundImage(new Image("images\\Night.png", 400, 600, false, true), null, null,
+                null, null);
+        
+        mainScreen.setBackground(new Background(morningImage));
+    }
 
     
     String responseBody = "";
@@ -187,6 +238,7 @@ public class Controller {
             
             // Display the forecast data in the weatherForecast label in App.fxml
             weatherForecast.setText(forecastOutput);  
+            weatherForecast.setTextAlignment(TextAlignment.CENTER); 
         
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
